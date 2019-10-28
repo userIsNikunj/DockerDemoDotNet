@@ -8,4 +8,5 @@ This is a sample project that uses docker on windows containers to run a .net fr
 4) $docker ps -a
 
 #To publish image online on docker hub
+
 $docker push YourUserName/dockertrial
