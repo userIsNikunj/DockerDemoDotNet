@@ -3,5 +3,10 @@
 
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8-windowsservercore-ltsc2019
 ARG source
+
+#WORKDIR /src
+#COPY Migrations .
+#RUN flyway migrate --user=$SA_USER -password=$SA_PASSWORD -url="jdbc:sqlserver://db:1433;databaseName=master" -locations="filesystem:."
+
 WORKDIR /inetpub/wwwroot
 COPY ${source:-obj/Docker/publish} .
