@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  dockertrial:
+    image: ${DOCKER_REGISTRY-}dockertrial
+    build:
+      context: .\DockerTrial
+      dockerfile: Dockerfile
+    environment:
+      SA_USER: "sa"
+      SA_PASSWORD: "123@456ABC"
+    depends_on:
+      - db
+      #- migration
+  #migration:
+   # build:
+    #  context: .
+    #  dockerfile: Migrations/Dockerfile
+    #environment:
+    #  SA_USER: "sa"
+     # SA_PASSWORD: "123@456ABC"
+    #depends_on:
+     # - db
+  db:
+    image:  "microsoft/mssql-server-windows-developer"
+    environment:
+      SA_PASSWORD: "123@456ABC"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
